@@ -96,10 +96,10 @@ function makefile_clean()
 function makefile_help() 
 {
     echo "Usage : ./make.sh [OPTION]"
-    echo -e "\t-a  : build executable file immediately"
-    echo -e "\t-an : build executable file with a specific name immediately"
-    echo -e "\t-b  : build Makefile only"
-    echo -e "\t-bn : build Makefile with a specific name"
+    echo -e "\t-e  : build executable file immediately"
+    echo -e "\t-en : build executable file with a specific name immediately"
+    echo -e "\t-m  : build Makefile only"
+    echo -e "\t-mn : build Makefile with a specific name"
     echo -e "\t-c  : Clean object files and executable file"
     echo -e "\t-r  : Run the executable file"
 }
@@ -111,30 +111,30 @@ function makefile_help()
 OPT=$1
 if [ $# -eq 0 ]
 then
-    OPT="-a"
+    OPT="-e"
 fi
 #set -x
 makefile_init
 case $OPT in 
-    "-a")
+    "-e")
         echo "Create executable file..."
         makefile_build_object
         makefile_build_execute $EXEC
         echo "Done !!!"
         ;;
-    "-an")
+    "-en")
         read -p "Enter name of executable file : " EXEC
         echo "Create executable file..."
         makefile_build_object
         makefile_build_execute $EXEC
         echo "Done !!!"
         ;;
-    "-b")
+    "-m")
         echo "Create Makefile..."
         makefile_create_file $EXEC
         echo "Done !!!"
         ;;
-    "-bn")
+    "-mn")
         read -p "Enter name of executable file : " EXEC
         echo "Create Makefile..."
         makefile_create_file $EXEC
